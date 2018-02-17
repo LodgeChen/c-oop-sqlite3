@@ -66,14 +66,17 @@ Output :
 ### Option 1 : From source files
 
 Compiled with GCC :
+
 	gcc -Wall -Wextra -ansi -pedantic -std=c99 ../src/database.c ../ext/sqlite-amalgamation-3220000/sqlite3.c ./main.c -o program
 
 ### Option 2 : With Windows DLL
 
 Compiled with GCC :
+
 	gcc -Wall -Wextra -ansi -pedantic -std=c99 ../src/database.c ../lib/sqlite3/sqlite3.dll ./main.c -o program
 
 Note that you can generate the DLL with :
+
 	gcc -shared sqlite3.c -o sqlite3.dll
 
-And with this option the DLL must be present next to the executable
+With option n°2, the DLL **must be present next to the executable**.
