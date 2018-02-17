@@ -1,5 +1,5 @@
-#ifndef _OOP_SQLITE
-#define _OOP_SQLITE
+#ifndef _OOP_DATABASE_H
+#define _OOP_DATABASE_H
 
 #include <stddef.h>
 #include <stdbool.h>
@@ -7,6 +7,11 @@
 typedef struct DBConnection DBConnection;
 typedef struct PreparedStatement PreparedStatement;
 
+/**
+ * A struct for handling the connection
+ *
+ * @author Gokan EKINCI
+ */
 struct DBConnection {
     void* handler;
     bool (*free)(DBConnection* c);
@@ -20,6 +25,11 @@ struct DBConnection {
 
 
 
+/**
+ * A struct for handling a prepared statement
+ *
+ * @author Gokan EKINCI
+ */
 struct PreparedStatement {
     void* handler;
     void* connectionHandler;
