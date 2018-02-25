@@ -18,8 +18,10 @@ In the example below, you see how to *create*, how to *insert into* (or *update*
 			PreparedStatement p1;
 			if (c.prepareStatement(&c, &p1, "CREATE TABLE IF NOT EXISTS my_table(id INTEGER, name VARCHAR(20))")) {
 				p1.executeUpdate(&p1);
+
+				// Free PreparedStatement
+				p1.free(&p1);
 			}
-			p1.free(&p1);
 
 			// 2. Writing (with a transaction)
 			if (c.startTransaction(&c)) {
@@ -34,8 +36,10 @@ In the example below, you see how to *create*, how to *insert into* (or *update*
 					p2.setInt(&p2, 1, 200);
 					p2.setText(&p2, 2, "Super Luigi");
 					p2.executeUpdate(&p2);
+
+					// Free PreparedStatement
+					p2.free(&p2);
 				}
-				p2.free(&p2);
 				c.commit(&c);
 			}
 
@@ -45,11 +49,13 @@ In the example below, you see how to *create*, how to *insert into* (or *update*
 				while (p3.next(&p3)) {
 					fprintf(stdout, "The 'id' is '%d' and the 'name' is '%s' \n", p3.getInt(&p3, 1), p3.getText(&p3, 2));
 				}
+
+				// Free PreparedStatement
+				p3.free(&p3);
 			}
-			p3.free(&p3);
 		}
 
-		// Closing resource
+		// Free connection resource
 		c.free(&c);
 
 		return EXIT_SUCCESS;
