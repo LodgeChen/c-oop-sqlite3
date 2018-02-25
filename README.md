@@ -53,10 +53,10 @@ In the example below, you see how to *create*, how to *insert into* (or *update*
 				// Free PreparedStatement
 				p3.free(&p3);
 			}
-		}
 
-		// Free connection resource
-		c.free(&c);
+			// Free connection resource
+			c.free(&c);
+		}
 
 		return EXIT_SUCCESS;
 	}
